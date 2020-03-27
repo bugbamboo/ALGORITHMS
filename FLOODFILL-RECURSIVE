@@ -1,0 +1,25 @@
+import java.util.Arrays;
+
+public class no {
+    private static int count=0;
+
+    public static void main(String[] args) {
+        int[][] arr = {{1,0,0},{0,1,0},{0,1,0}};
+       flood(1,1,1,arr,-1);
+        System.out.println(Arrays.deepToString(arr));
+        System.out.println(count);
+    }
+    static void flood(int startX, int startY, int searchPart, int[][] arr,int color){
+        if((startX < arr.length && startX > -1)&&(startY < arr[0].length && startY > -1) && arr[startX][startY]== searchPart){
+            count +=1;
+            arr[startX][startY] = color;
+            flood(startX+1,startY,searchPart,arr,color);
+            flood(startX,startY+1,searchPart,arr,color);
+            flood(startX-1,startY,searchPart,arr,color);
+            flood(startX,startY-1,searchPart,arr,color);
+        }else{
+            return;
+        }
+
+    }
+}
